@@ -1,5 +1,6 @@
 // console.log("Hello World");
 
+// Function to get the computer choice
 function getComputerChoice () {
 // randomly return one of the following string values: “rock”, “paper” or “scissors”
     let com = Math.trunc(Math.random() * 3); 
@@ -17,4 +18,11 @@ function getComputerChoice () {
 
 }
 
-console.log(getComputerChoice());
+// console.log(getComputerChoice());
+
+// Function to get thr human choice
+function getHumanChoice() {
+    return "Human Choice";
+}
+
+console.log(getHumanChoice());
