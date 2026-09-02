@@ -21,7 +21,7 @@ function getComputerChoice () {
 
 }
 
-// console.log(getComputerChoice());
+let com = getComputerChoice();
 
 // Function to get the human choice
 function getHumanChoice() {
@@ -29,15 +29,27 @@ function getHumanChoice() {
     let player = prompt("Choose Rock or Paper or Scissors").toLowerCase();
     
     if (player == "rock") {
-        return 0;
+        return "rock"
     } else if (player == "scissors") {
-        return 1;
+        return "scissors"
     } else if (player == "paper") {
-        return 2
+        return "paper"
     } else {
-        return Math.trunc(Math.random() * 3);
+        return getComputerChoice ();
     }
 
 }
+let player = getHumanChoice()
 
-console.log(getHumanChoice());
+
+// To-Do:  a function that takes the human and computer player choices as arguments, plays a single round, increments the round winner’s score and logs a winner announcement.
+
+// Define two parameters for playRound: humanChoice and computerChoice
+function playRound(humanChoice, computerChoice) {
+    
+    // Show Result
+    console.log("Computer's Choice: " + com);
+    console.log("Your Choice: " + player);
+}
+
+playRound();
