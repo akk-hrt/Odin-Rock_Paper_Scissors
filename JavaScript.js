@@ -21,7 +21,6 @@ function getComputerChoice () {
 
 }
 
-let com = getComputerChoice();
 
 // Function to get the human choice
 function getHumanChoice() {
@@ -39,14 +38,33 @@ function getHumanChoice() {
     }
 
 }
-let player = getHumanChoice()
+
 
 
 // To-Do:  a function that takes the human and computer player choices as arguments, plays a single round, increments the round winner’s score and logs a winner announcement.
 
 // Define two parameters for playRound: humanChoice and computerChoice
 function playRound(humanChoice, computerChoice) {
-    result = 0;
+    let result = 0;
+    if (humanChoice === computerChoice) {
+        result = "Draw!";
+    } else if ( //player wins
+        (humanChoice === "rock" && computerChoice === "scissors") || 
+        (humanChoice === "scissors" && computerChoice === "paper") || 
+        (humanChoice === "paper" && computerChoice === "rock")
+     ) {
+        // player wins
+        result = "You win!"; 
+        humanScore++;
+    } else if ( // player loses
+        (computerChoice === "rock" && humanChoice === "scissors") || 
+        (computerChoice === "scissors" && humanChoice === "paper") || 
+        (computerChoice === "paper" && humanChoice === "rock")
+        ) {
+        result = "You lose!"
+        computerScore++;
+    }
+    
     // Show Result
     console.log("Computer's Choice: " + humanChoice);
     console.log("Your Choice: " + computerChoice);
@@ -55,4 +73,6 @@ function playRound(humanChoice, computerChoice) {
     console.log("Computer's current score: " + computerScore);
 }
 
+let com = getComputerChoice();
+let player = getHumanChoice();
 playRound(player, com);
