@@ -73,6 +73,15 @@ function playRound(humanChoice, computerChoice) {
     console.log("Computer's current score: " + computerScore);
 }
 
-let com = getComputerChoice();
-let player = getHumanChoice();
-playRound(player, com);
+
+
+function playGame() {
+    for (let i = 0; i < 5; i++)
+    {
+        let com = getComputerChoice();
+        let player = getHumanChoice();
+        playRound(player, com);
+    }
+}
+
+playGame();
