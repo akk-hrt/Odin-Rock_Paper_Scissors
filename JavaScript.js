@@ -46,10 +46,13 @@ let player = getHumanChoice()
 
 // Define two parameters for playRound: humanChoice and computerChoice
 function playRound(humanChoice, computerChoice) {
-    
+    result = 0;
     // Show Result
-    console.log("Computer's Choice: " + com);
-    console.log("Your Choice: " + player);
+    console.log("Computer's Choice: " + humanChoice);
+    console.log("Your Choice: " + computerChoice);
+    console.log(result);
+    console.log("Your current score: " + humanScore);
+    console.log("Computer's current score: " + computerScore);
 }
 
-playRound();
+playRound(player, com);
