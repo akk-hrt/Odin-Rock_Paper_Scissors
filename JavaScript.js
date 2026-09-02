@@ -71,13 +71,15 @@ function playRound(humanChoice, computerChoice) {
     console.log(result);
     console.log("Your current score: " + humanScore);
     console.log("Computer's current score: " + computerScore);
+    console.log(" ");
 }
 
 
 
 function playGame() {
-    for (let i = 0; i < 5; i++)
+    for (let i = 1; i <= 5; i++)
     {
+        console.log ("Round" + i);
         let com = getComputerChoice();
         let player = getHumanChoice();
         playRound(player, com);
