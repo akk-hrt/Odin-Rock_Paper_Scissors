@@ -1,4 +1,7 @@
 // console.log("Hello World");
+// Global variables
+let humanScore = 0;
+let computerScore = 0;
 
 // Function to get the computer choice
 function getComputerChoice () {
@@ -20,9 +23,21 @@ function getComputerChoice () {
 
 // console.log(getComputerChoice());
 
-// Function to get thr human choice
+// Function to get the human choice
 function getHumanChoice() {
-    return "Human Choice";
+    // take player's choice
+    let player = prompt("Choose Rock or Paper or Scissors").toLowerCase();
+    
+    if (player == "rock") {
+        return 0;
+    } else if (player == "scissors") {
+        return 1;
+    } else if (player == "paper") {
+        return 2
+    } else {
+        return Math.trunc(Math.random() * 3);
+    }
+
 }
 
 console.log(getHumanChoice());
