@@ -75,7 +75,7 @@ function playRound(humanChoice, computerChoice) {
 }
 
 
-
+/* Legacy: Logic to run 5 rounds
 function playGame() {
     for (let i = 1; i <= 5; i++)
     {
@@ -87,3 +87,4 @@ function playGame() {
 }
 
 playGame();
+*/
