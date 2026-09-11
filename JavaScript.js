@@ -52,12 +52,12 @@ function playRound(humanChoice) {
 
     }
 
-    if (humanScore >= 5){
+    if (humanScore > 4){
         round.innerText = "Winner: You"
         yourCurrentScore.innerText = "Your Final Score: " + humanScore;
         comCurrentScore.innerText = "Computer's Final Score: " + computerScore;
 
-    } else if (computerScore >= 5) {
+    } else if (computerScore > 4) {
         round.innerText = "Winner: Computer"
         yourCurrentScore.innerText = "Your Final Score: " + humanScore;
         comCurrentScore.innerText = "Computer's Final Score: " + computerScore;
@@ -105,67 +105,24 @@ function playRound(humanChoice) {
         resultField.appendChild(comCurrentScore);
 
 
-        roundCount++
+        roundCount++;
 
    }
 
 }
 
-// while (humanScore < 5 && computerScore < 5){
+rock.addEventListener("click", () => {
+    playerSelection = "rock";
+    playRound(playerSelection);
+});
 
-    rock.addEventListener("click", () => {
-        playerSelection = "rock";
-        playRound(playerSelection);
-    });
+scissors.addEventListener("click", () => {
+    playerSelection = "scissors";
+    playRound(playerSelection);
+});
 
-    scissors.addEventListener("click", () => {
-        playerSelection = "scissors";
-        playRound(playerSelection);
-    });
-
-    paper.addEventListener("click", () => {
-        playerSelection = "paper";
-        playRound(playerSelection);
-        
-    });
-
-// }
-
-
- 
-
-/*
-else if (humanScore == 5) {
-    winner.innerText = "Congratulations! You Win!"
-    resultField.appendChild(winner);
-}
-*/
-
-
-
-
-/* OLD CODES
-
-
-
-
-
-
-
-
-console.log(computerSelection);
-
-
-/* Legacy: Logic to run 5 rounds
-function playGame() {
-    for (let i = 1; i <= 5; i++)
-    {
-        console.log ("Round" + i);
-        let com = getComputerChoice();
-        let player = getHumanChoice();
-        playRound(player, com);
-    }
-}
-
-playGame();
-*/
+paper.addEventListener("click", () => {
+    playerSelection = "paper";
+    playRound(playerSelection);
+    
+});
