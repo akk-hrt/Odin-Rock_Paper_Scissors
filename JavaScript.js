@@ -11,6 +11,25 @@ const scissors = document.getElementById("scissors");
 const paper = document.getElementById("paper");
 const resultField = document.getElementById("resultField");
 
+const round = document.createElement("h2");
+const yourChoice = document.createElement("p");
+const comChoice = document.createElement("p");
+const roundResult = document.createElement("p");
+const yourCurrentScore = document.createElement("p");
+const comCurrentScore = document.createElement("p");
+
+function resetResultField () {
+    round.innerText="";
+    yourChoice.innerText = "";
+    comChoice.innerText = "";
+    roundResult.innerText = "";
+    yourCurrentScore.innerText = "";
+    comCurrentScore.innerText = "";
+}
+
+
+
+
 // Function to get the computer choice
 function getComputerChoice () {
 // randomly return one of the following string values: “rock”, “paper” or “scissors”
@@ -31,17 +50,19 @@ function getComputerChoice () {
 
 // Define two parameters for playRound: humanChoice and computerChoice
 function playRound(humanChoice) {
-    const round = document.createElement("h2");
+    if (roundCount != 1) {
+        resetResultField();
+
+    }
+
     round.innerText = "Result: Round " + roundCount;
     resultField.appendChild(round);
 
-    const yourChoice = document.createElement("p");
     yourChoice.innerText = "Your Choice: " + humanChoice;
     resultField.appendChild(yourChoice); 
     
 
     computerSelection = getComputerChoice();
-    const comChoice = document.createElement("p");
     comChoice.innerText = "Computer's Choice: " + computerSelection;
     resultField.appendChild(comChoice); 
 
@@ -65,15 +86,12 @@ function playRound(humanChoice) {
     }
     
     // Show Result
-    const roundResult = document.createElement("p");
     roundResult.innerText = result;
     resultField.appendChild(roundResult);
 
-    const yourCurrentScore = document.createElement("p");
     yourCurrentScore.innerText = "Your current score: " + humanScore;
     resultField.appendChild(yourCurrentScore);
 
-    const comCurrentScore = document.createElement("p");
     comCurrentScore.innerText = "Computer's current score: " + computerScore;
     resultField.appendChild(comCurrentScore);
 
