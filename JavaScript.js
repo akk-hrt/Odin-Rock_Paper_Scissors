@@ -59,16 +59,13 @@ function playRound(humanChoice) {
 
     }
 
-    if (humanScore > 4){
-        round.innerText = "Winner: You"
-        yourCurrentScore.innerText = "Your Final Score: " + humanScore;
-        comCurrentScore.innerText = "Computer's Final Score: " + computerScore;
-        yourChoice.remove();
-        comChoice.remove();
-        roundResult.remove();
-
-    } else if (computerScore > 4) {
+    if (humanScore > 4 || computerScore > 4) {
+        if (humanScore > 4){
+           round.innerText = "Winner: You"     
+        } else if (computerScore > 4) {
         round.innerText = "Winner: Computer"
+        }
+
         yourCurrentScore.innerText = "Your Final Score: " + humanScore;
         comCurrentScore.innerText = "Computer's Final Score: " + computerScore;
         yourChoice.remove();
