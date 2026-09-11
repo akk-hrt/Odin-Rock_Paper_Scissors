@@ -101,11 +101,6 @@ paper.addEventListener("click", () => {
 });
 
 
-const btnPressed = document.getElementsByClassName("choice");
-
-
-
-
 
 /* OLD CODES
 
@@ -114,28 +109,7 @@ const btnPressed = document.getElementsByClassName("choice");
 
 
 
-// Function to get the human choice
-function getHumanChoice() {
-    // take player's choice
-    let player = prompt("Choose Rock or Paper or Scissors").toLowerCase();
-    
-    if (player == "rock") {
-        return "rock"
-    } else if (player == "scissors") {
-        return "scissors"
-    } else if (player == "paper") {
-        return "paper"
-    } else {
-        return getComputerChoice ();
-    }
 
-}
-
-
-
-// To-Do:  a function that takes the human and computer player choices as arguments, plays a single round, increments the round winner’s score and logs a winner announcement.
-
-/
 
 console.log(computerSelection);
 
