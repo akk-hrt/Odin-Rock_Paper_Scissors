@@ -1,10 +1,17 @@
-// console.log("Hello World");
 // Global variables
 let humanScore = 0;
 let computerScore = 0;
 let playerSelection = "";
 let computerSelection = "";
 let result = "";
+
+const rock = document.getElementById("rock");
+const scissors = document.getElementById("scissors");
+const paper = document.getElementById("paper");
+
+console.log(rock);
+console.log(scissors);
+console.log(paper);
 
 // Function to get the computer choice
 function getComputerChoice () {
