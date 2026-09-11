@@ -17,6 +17,7 @@ const comChoice = document.createElement("p");
 const roundResult = document.createElement("p");
 const yourCurrentScore = document.createElement("p");
 const comCurrentScore = document.createElement("p");
+const winner = document.createElement("strong");
 
 function resetResultField () {
     round.innerText="";
@@ -27,10 +28,6 @@ function resetResultField () {
     comCurrentScore.innerText = "";
 }
 
-
-
-
-// Function to get the computer choice
 function getComputerChoice () {
 // randomly return one of the following string values: “rock”, “paper” or “scissors”
     let com = Math.trunc(Math.random() * 3); 
@@ -55,68 +52,95 @@ function playRound(humanChoice) {
 
     }
 
-    round.innerText = "Result: Round " + roundCount;
-    resultField.appendChild(round);
+    if (humanScore >= 5){
+        round.innerText = "Winner: You"
+        yourCurrentScore.innerText = "Your Final Score: " + humanScore;
+        comCurrentScore.innerText = "Computer's Final Score: " + computerScore;
 
-    yourChoice.innerText = "Your Choice: " + humanChoice;
-    resultField.appendChild(yourChoice); 
-    
+    } else if (computerScore >= 5) {
+        round.innerText = "Winner: Computer"
+        yourCurrentScore.innerText = "Your Final Score: " + humanScore;
+        comCurrentScore.innerText = "Computer's Final Score: " + computerScore;
 
-    computerSelection = getComputerChoice();
-    comChoice.innerText = "Computer's Choice: " + computerSelection;
-    resultField.appendChild(comChoice); 
+    } else {
 
-    if (humanChoice === computerSelection) {
-        result = "Draw!";
-    } else if ( //player wins
-        (humanChoice === "rock" && computerSelection === "scissors") || 
-        (humanChoice === "scissors" && computerSelection === "paper") || 
-        (humanChoice === "paper" && computerSelection === "rock")
-     ) {
-        // player wins
-        result = "You win!"; 
-        humanScore++;
-    } else if ( // player loses
-        (computerSelection === "rock" && humanChoice === "scissors") || 
-        (computerSelection === "scissors" && humanChoice === "paper") || 
-        (computerSelection === "paper" && humanChoice === "rock")
+        round.innerText = "Result: Round " + roundCount;
+        resultField.appendChild(round);
+
+        yourChoice.innerText = "Your Choice: " + humanChoice;
+        resultField.appendChild(yourChoice); 
+        
+
+        computerSelection = getComputerChoice();
+        comChoice.innerText = "Computer's Choice: " + computerSelection;
+        resultField.appendChild(comChoice); 
+
+        if (humanChoice === computerSelection) {
+            result = "Draw!";
+        } else if ( //player wins
+            (humanChoice === "rock" && computerSelection === "scissors") || 
+            (humanChoice === "scissors" && computerSelection === "paper") || 
+            (humanChoice === "paper" && computerSelection === "rock")
         ) {
-        result = "You lose!"
-        computerScore++;
-    }
-    
-    // Show Result
-    roundResult.innerText = result;
-    resultField.appendChild(roundResult);
+            // player wins
+            result = "You win!"; 
+            humanScore++;
+        } else if ( // player loses
+            (computerSelection === "rock" && humanChoice === "scissors") || 
+            (computerSelection === "scissors" && humanChoice === "paper") || 
+            (computerSelection === "paper" && humanChoice === "rock")
+            ) {
+            result = "You lose!"
+            computerScore++;
+        }
+        
+        // Show Result
+        roundResult.innerText = result;
+        resultField.appendChild(roundResult);
 
-    yourCurrentScore.innerText = "Your current score: " + humanScore;
-    resultField.appendChild(yourCurrentScore);
+        yourCurrentScore.innerText = "Your current score: " + humanScore;
+        resultField.appendChild(yourCurrentScore);
 
-    comCurrentScore.innerText = "Computer's current score: " + computerScore;
-    resultField.appendChild(comCurrentScore);
+        comCurrentScore.innerText = "Computer's current score: " + computerScore;
+        resultField.appendChild(comCurrentScore);
 
 
-    roundCount++
+        roundCount++
 
-   
+   }
 
 }
 
-rock.addEventListener("click", () => {
-    playerSelection = "rock";
-    playRound(playerSelection);
-});
+// while (humanScore < 5 && computerScore < 5){
 
-scissors.addEventListener("click", () => {
-    playerSelection = "scissors";
-    playRound(playerSelection);
-});
+    rock.addEventListener("click", () => {
+        playerSelection = "rock";
+        playRound(playerSelection);
+    });
 
-paper.addEventListener("click", () => {
-    playerSelection = "paper";
-    playRound(playerSelection);
-    
-});
+    scissors.addEventListener("click", () => {
+        playerSelection = "scissors";
+        playRound(playerSelection);
+    });
+
+    paper.addEventListener("click", () => {
+        playerSelection = "paper";
+        playRound(playerSelection);
+        
+    });
+
+// }
+
+
+ 
+
+/*
+else if (humanScore == 5) {
+    winner.innerText = "Congratulations! You Win!"
+    resultField.appendChild(winner);
+}
+*/
+
 
 
 
