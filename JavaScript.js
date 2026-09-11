@@ -12,12 +12,19 @@ const paper = document.getElementById("paper");
 const resultField = document.getElementById("resultField");
 
 const round = document.createElement("h2");
+round.setAttribute("class", "center");
 const yourChoice = document.createElement("p");
+yourChoice.setAttribute("class", "center");
 const comChoice = document.createElement("p");
+comChoice.setAttribute("class", "center");
 const roundResult = document.createElement("p");
+roundResult.setAttribute("class", "center");
 const yourCurrentScore = document.createElement("p");
+yourCurrentScore.setAttribute("class", "center");
 const comCurrentScore = document.createElement("p");
+comCurrentScore.setAttribute("class", "center");
 const winner = document.createElement("strong");
+winner.setAttribute("class", "center");
 
 function resetResultField () {
     round.innerText="";
@@ -56,11 +63,17 @@ function playRound(humanChoice) {
         round.innerText = "Winner: You"
         yourCurrentScore.innerText = "Your Final Score: " + humanScore;
         comCurrentScore.innerText = "Computer's Final Score: " + computerScore;
+        yourChoice.remove();
+        comChoice.remove();
+        roundResult.remove();
 
     } else if (computerScore > 4) {
         round.innerText = "Winner: Computer"
         yourCurrentScore.innerText = "Your Final Score: " + humanScore;
         comCurrentScore.innerText = "Computer's Final Score: " + computerScore;
+        yourChoice.remove();
+        comChoice.remove();
+        roundResult.remove();
 
     } else {
 

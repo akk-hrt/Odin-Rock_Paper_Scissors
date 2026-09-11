@@ -7,21 +7,25 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- To-Do: Add a skip link -->
+
     <header>
         <a href="#main" class="skipLink">Skip to the main content</a>
 
-        <h1>Rock Paper Scissors</h1>
+        <h1 class="center">Rock Paper Scissors</h1>
 
     </header>
 
 
     <main id="main">
-        <h2>Let's play rock paper scissors.</h2>
-        <p>What's your choice?</p>
-        <button class="choice" id="rock">Rock</button>
-        <button class="choice" id="scissors">Scissors</button>
-        <button class="choice" id="paper">Paper</button>
+        
+        <h2 class="center">Let's play rock paper scissors.</h2>
+        <p class="center">What's your choice?</p>
+        <div class="btnField">
+            <button class="choice" id="rock">Rock</button>
+            <button class="choice" id="scissors">Scissors</button>
+            <button class="choice" id="paper">Paper</button>
+        </div>
+        
         <div class="result" id="resultField"></div>
     </main>
     <script src="JavaScript.js"></script>

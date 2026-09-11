@@ -1,0 +1,36 @@
+* {
+    /* overflow: scroll; */
+}
+
+body {
+    max-width: 980px;
+    margin: 1rem auto;
+}
+
+
+main {
+    background-color: azure;
+
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+}
+
+.btnField {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+.choice {
+    min-width: 100px;
+    min-height: 100px;
+    padding: 10px;
+
+}
+
+#resultField {
+    background-color: bisque;
+
+}
