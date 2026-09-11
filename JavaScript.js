@@ -1,6 +1,7 @@
 // Global variables
 let humanScore = 0;
 let computerScore = 0;
+let roundCount = 1;
 let playerSelection = "";
 let computerSelection = "";
 let result = "";
@@ -8,6 +9,7 @@ let result = "";
 const rock = document.getElementById("rock");
 const scissors = document.getElementById("scissors");
 const paper = document.getElementById("paper");
+const resultField = document.getElementById("resultField");
 
 // Function to get the computer choice
 function getComputerChoice () {
@@ -29,10 +31,19 @@ function getComputerChoice () {
 
 // Define two parameters for playRound: humanChoice and computerChoice
 function playRound(humanChoice) {
-    console.log("Your Choice: " + humanChoice);
-    computerSelection = getComputerChoice();
+    const round = document.createElement("h2");
+    round.innerText = "Result: Round " + roundCount;
+    resultField.appendChild(round);
+
+    const yourChoice = document.createElement("p");
+    yourChoice.innerText = "Your Choice: " + humanChoice;
+    resultField.appendChild(yourChoice); 
     
-    console.log("Computer's Choice: " + computerSelection);
+
+    computerSelection = getComputerChoice();
+    const comChoice = document.createElement("p");
+    comChoice.innerText = "Computer's Choice: " + computerSelection;
+    resultField.appendChild(comChoice); 
 
     if (humanChoice === computerSelection) {
         result = "Draw!";
@@ -54,10 +65,21 @@ function playRound(humanChoice) {
     }
     
     // Show Result
-    console.log(result);
-    console.log("Your current score: " + humanScore);
-    console.log("Computer's current score: " + computerScore);
-    console.log(" ");
+    const roundResult = document.createElement("p");
+    roundResult.innerText = result;
+    resultField.appendChild(roundResult);
+
+    const yourCurrentScore = document.createElement("p");
+    yourCurrentScore.innerText = "Your current score: " + humanScore;
+    resultField.appendChild(yourCurrentScore);
+
+    const comCurrentScore = document.createElement("p");
+    comCurrentScore.innerText = "Computer's current score: " + computerScore;
+    resultField.appendChild(comCurrentScore);
+
+
+    roundCount++
+
    
 
 }
@@ -74,10 +96,8 @@ scissors.addEventListener("click", () => {
 
 paper.addEventListener("click", () => {
     playerSelection = "paper";
-     playRound(playerSelection);
-    // computerSelection = getComputerChoice();
-    // console.log("Player's Choice: " + playerSelection);
-    // console.log("Computer's Choice: " + computerSelection);
+    playRound(playerSelection);
+    
 });
 
 
