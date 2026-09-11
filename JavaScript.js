@@ -2,6 +2,9 @@
 // Global variables
 let humanScore = 0;
 let computerScore = 0;
+let playerSelection = "";
+let computerSelection = "";
+let result = "";
 
 // Function to get the computer choice
 function getComputerChoice () {
