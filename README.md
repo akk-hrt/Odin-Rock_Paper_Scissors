@@ -17,6 +17,7 @@ This project implements an interactive Rock Paper Scissors game where players co
 - No Dependencies: Pure vanilla JavaScript with no external libraries.
 
 ## How to Play
+
 1. Press one of the three buttons: Rock, Paper, or Scissors
 2. The computer makes a random choice
 3. The winner of the round is determined by these rules:
@@ -27,7 +28,33 @@ This project implements an interactive Rock Paper Scissors game where players co
 5. First to win 5 rounds wins the game!
 
 ## Technologies Used
+
 - HTML
 - CSS
 - JavaScript
 - GitHub Pages
+
+## Project Structure
+
+Odin-Rock_Paper_Scissors/
+├── index.html 
+├── JavaScript.js
+├── style.css
+└── README.md
+
+## Learning Outcomes
+This project demonstrates:
+- DOM manipulation with JavaScript
+- Event listeners and event handling
+- Game state management with global variables
+- Conditional logic and control flow
+- Function organisation and reusability
+
+## Future Improvements
+- Enhance accessibility for screen readers and keyboard navigation
+- Add a "Play Again" or "Reset Game" button
+- Improve UI/UX
+
+## References
+- [The Odin Project - Project: Rock Paper Scissors page](https://www.theodinproject.com/lessons/foundations-rock-paper-scissors)
+- [The Odin Project - Revisiting Rock Paper Scissors page](https://www.theodinproject.com/lessons/foundations-revisiting-rock-paper-scissors)
