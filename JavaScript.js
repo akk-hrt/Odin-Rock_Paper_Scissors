@@ -1,6 +1,96 @@
-// Global variables
+// Score Variables
 let humanScore = 0;
 let computerScore = 0;
+let draw = 0;
+let gameOver = false;
+const winningScore = 5;
+let result = "";
+
+// Page Elements Selectors
+const choiceButtons = document.querySelectorAll("[data-choice]");
+const results = document.querySelector("#results");
+const scoreDisplay = document.querySelector("#score")
+const humanScoreDisplay = document.querySelector("#human-score");
+const computerScoreDisplay = document.querySelector("#computer-score");
+const restartButton = document.querySelector("#restart-button")
+
+// Functions to Play Rounds
+function getComputerChoice () {
+// randomly return one of the following string values: “rock”, “paper” or “scissors”
+    const choices = ["rock", "scissors", "paper"];
+    const randomIndex = Math.floor(Math.random() * choices.length);
+
+    return choices[randomIndex];
+}
+
+function judge(humanChoice, computerChoice) {
+
+    if (humanChoice === computerChoice) {
+        return draw++
+    } else if ( //player wins
+        (humanChoice === "rock" && computerChoice === "scissors") || 
+        (humanChoice === "scissors" && computerChoice === "paper") || 
+        (humanChoice === "paper" && computerChoice === "rock")
+    ) {
+        // player wins
+        return humanScore++;
+    } else if ( // player loses
+        (computerChoice === "rock" && humanChoice === "scissors") || 
+        (computerChoice === "scissors" && humanChoice === "paper") || 
+        (computerChoice === "paper" && humanChoice === "rock")
+        ) {
+        return computerScore++;
+    }
+}
+
+function updateScoreDisplay() {
+    humanScoreDisplay.textContent = humanScore;
+    computerScoreDisplay.textContent = computerScore;
+    
+}
+
+function playRound (humanChoice) {
+    if (gameover){
+        return;
+    }
+
+    const computerChoice = getComputerChoice();
+
+    // Compare humanChoice against computerChoice
+    judge(humanChoice, computerChoice);
+    console.log(draw);
+    updateScoreDisplay();
+
+
+
+}
+
+
+playRound("rock");
+
+
+
+
+function resetGame() {
+    humanScore = 0;
+    computerScore = 0;
+    gameOver = false;
+
+    updateScoreDisplay();
+
+    results.textContent = "Make a choice to begin.";
+
+    choiceButtons.forEach((button) => {
+        button.disabled = false;
+    });
+
+    restartButton.hidden = true;
+}
+
+
+/* Old codes
+// Global variables
+
 let roundCount = 1;
 let playerSelection = "";
 let computerSelection = "";
@@ -35,22 +125,6 @@ function resetResultField () {
     comCurrentScore.innerText = "";
 }
 
-function getComputerChoice () {
-// randomly return one of the following string values: “rock”, “paper” or “scissors”
-    let com = Math.trunc(Math.random() * 3); 
-
-    if (com == 0) {
-        return "rock";
-    } else if (com == 1) {
-        return "scissors";
-    } else if (com == 2) {
-        return "paper";
-    } else {
-        return "error";
-    }
-    
-
-}
 
 // Define two parameters for playRound: humanChoice and computerChoice
 function playRound(humanChoice) {
@@ -136,3 +210,5 @@ paper.addEventListener("click", () => {
     playRound(playerSelection);
     
 });
+
+*/
