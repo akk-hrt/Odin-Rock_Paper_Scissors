@@ -25,15 +25,23 @@
             </div>
         </section>
 
-        <section aria-labelledby="result-heading">
+        <section aria-atomic="true" aria-live="polite">
+            <h2 class="center">Status</h2>
+            <p id="action-feedback" class="center">
+                You haven't started a game. Your choice will be displayed here once you make a choice.
+            </p>
+
+        </section>
+
+        <section aria-labelledby="result-heading" aria-live="polite" aria-atomic="true">
             <h2 id="result-heading" class="center">Round Result</h2>
 
-            <div id="results" aria-live="polite" class="center">
+            <p id="results" class="center">
                 Make a choice to begin.
-            </div>
+            </p>
         </section>
         
-        <section aria-live="polite">
+        <section aria-live="polite" aria-atomic="true">
             <h2 id="score-heading" class="center">
                 Score
             </h2>

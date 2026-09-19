@@ -13,11 +13,13 @@ const scoreDisplay = document.querySelector("#score")
 const humanScoreDisplay = document.querySelector("#human-score");
 const computerScoreDisplay = document.querySelector("#computer-score");
 const restartButton = document.querySelector("#restart-button")
+const actionFeedback = document.querySelector("#action-feedback");
 
 choiceButtons.forEach((button) => {
     button.addEventListener("click", ()=>{
         humanSelection = button.dataset.choice;
-        // console.log(button.dataset);
+        actionFeedback.textContent =
+        `You selected ${humanSelection}. Playing the round.`;
         playRound(humanSelection);
     })
 })
@@ -43,12 +45,14 @@ function playRound (humanChoice) {
         return;
     }
 
+    
     const computerChoice = getComputerChoice();
 
     // Compare humanChoice against computerChoice
     if (humanChoice === computerChoice) {
+     
         results.textContent = `It's a tie. You both chose ${humanChoice}.`;
-        draw++;
+        
     
     } else if (
         (humanChoice === "rock" && computerChoice === "scissors") || 
@@ -56,14 +60,16 @@ function playRound (humanChoice) {
         (humanChoice === "paper" && computerChoice === "rock")
     ){
         // Human wins
+        
         results.textContent = `You win this round. ${humanChoice} beats ${computerChoice}!`
         humanScore++;
     } else {
+       
         results.textContent = `You lose this round. ${computerChoice} beats ${humanChoice}.`
         computerScore++;
     }
     
-    console.log(draw);
+    
     updateScoreDisplay();
     checkGameOver();
 
@@ -75,12 +81,16 @@ function checkGameOver() {
         gameOver = true;
         disableChoiceButtons();
         restartButton.hidden = false;
+        actionFeedback.textContent =
+        "The game is over. Select Play again to start a new game.";
         
     } else if (computerScore === winningScore) {
         results.textContent = `The computer won the game ${computerScore} tp ${humanScore}.`;
         gameOver = true;
         disableChoiceButtons();
         restartButton.hidden = false;
+        actionFeedback.textContent =
+        "The game is over. Select Play again to start a new game.";
     }
 }
 
@@ -99,6 +109,8 @@ function resetGame() {
     updateScoreDisplay();
 
     results.textContent = "Make a choice to begin.";
+    actionFeedback.textContent =
+    "You haven't started a game. Your choice will be displayed here once you make a choice.";
 
     choiceButtons.forEach((button) => {
         button.disabled = false;
