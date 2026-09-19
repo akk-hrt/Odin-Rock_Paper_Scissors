@@ -3,31 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors</title>
+    <title>Rock Paper Scissors (Accessible Version)</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-    <header>
-        <!-- <a href="#main" class="skipLink">Skip to the main content</a> -->
-
-        <h1 class="center">Rock Paper Scissors</h1>
-        
-
-    </header>
-
-
     <main id="main">
+        <h1 class="center">Rock Paper Scissors (Accessible Version)</h1>        
+        <p id="instructions" class="center">
+            Please choose rock, paper, or scissors to play against the computer.
+        </p>
         
-        <h2 class="center">Choose an option.</h2>
+        <section aria-labelledby="choise-hedding"> 
+            <h2 id="choise-hedding">
+                Make your choice.
+            </h2>
+
+            <div class="btnField">
+                <button type="button" data-choice="rock" class="choice" id="rock">Rock</button>
+                <button type="button" data-choice="scissors" class="choice" id="scissors">Scissors</button>
+                <button type="button"  data-choice="paper" class="choice" id="paper">Paper</button>
+            </div>
+        </section>
+
+        <section aria-labelledby="result-heading">
+            <h2 id="result-heading">Round Result</h2>
+
+            <div id="results" aria-live="polite">
+                Make a choice to begin.
+            </div>
+        </section>
         
-        <div class="btnField">
-            <button class="choice" id="rock">Rock</button>
-            <button class="choice" id="scissors">Scissors</button>
-            <button class="choice" id="paper">Paper</button>
-        </div>
+        <section aria-live="polite">
+            <h2 id="score-heading">
+                Score
+            </h2>
+            <dl>
+                <dt>You: </dt>
+                <dd>0</dd>
+                <dt>Computer: </dt>
+                <dd>0</dd>
+            </dl>
+
+        </section>
         
-        <div class="result" id="resultField" aria-live="polite"></div>
+
+
+        <button type="button" id="restart-button" hidden>
+            Play again
+        </button>
+ 
+       
     </main>
     <script src="JavaScript.js"></script>
 
