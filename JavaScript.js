@@ -14,6 +14,14 @@ const humanScoreDisplay = document.querySelector("#human-score");
 const computerScoreDisplay = document.querySelector("#computer-score");
 const restartButton = document.querySelector("#restart-button")
 
+choiceButtons.forEach((button) => {
+    button.addEventListener("click", ()=>{
+        humanSelection = button.dataset.choice;
+        // console.log(button.dataset);
+        playRound(humanSelection);
+    })
+})
+
 // Functions to Play Rounds
 function getComputerChoice () {
 // randomly return one of the following string values: “rock”, “paper” or “scissors”
@@ -23,25 +31,6 @@ function getComputerChoice () {
     return choices[randomIndex];
 }
 
-function judge(humanChoice, computerChoice) {
-
-    if (humanChoice === computerChoice) {
-        return draw++
-    } else if ( //player wins
-        (humanChoice === "rock" && computerChoice === "scissors") || 
-        (humanChoice === "scissors" && computerChoice === "paper") || 
-        (humanChoice === "paper" && computerChoice === "rock")
-    ) {
-        // player wins
-        return humanScore++;
-    } else if ( // player loses
-        (computerChoice === "rock" && humanChoice === "scissors") || 
-        (computerChoice === "scissors" && humanChoice === "paper") || 
-        (computerChoice === "paper" && humanChoice === "rock")
-        ) {
-        return computerScore++;
-    }
-}
 
 function updateScoreDisplay() {
     humanScoreDisplay.textContent = humanScore;
@@ -50,25 +39,56 @@ function updateScoreDisplay() {
 }
 
 function playRound (humanChoice) {
-    if (gameover){
+    if (gameOver){
         return;
     }
 
     const computerChoice = getComputerChoice();
 
     // Compare humanChoice against computerChoice
-    judge(humanChoice, computerChoice);
+    if (humanChoice === computerChoice) {
+        results.textContent = `It's a tie. You both chose ${humanChoice}.`;
+        draw++;
+    
+    } else if (
+        (humanChoice === "rock" && computerChoice === "scissors") || 
+        (humanChoice === "scissors" && computerChoice === "paper") || 
+        (humanChoice === "paper" && computerChoice === "rock")
+    ){
+        // Human wins
+        results.textContent = `You win this round. ${humanChoice} beats ${computerChoice}!`
+        humanScore++;
+    } else {
+        results.textContent = `You lose this round. ${computerChoice} beats ${humanChoice}.`
+        computerScore++;
+    }
+    
     console.log(draw);
     updateScoreDisplay();
-
-
+    checkGameOver();
 
 }
 
+function checkGameOver() {
+    if (humanScore === winningScore) {
+        results.textContent = `You won the game ${humanScore} to ${computerScore}!`;
+        gameOver = true;
+        disableChoiceButtons();
+        restartButton.hidden = false;
+        
+    } else if (computerScore === winningScore) {
+        results.textContent = `The computer won the game ${computerScore} tp ${humanScore}.`;
+        gameOver = true;
+        disableChoiceButtons();
+        restartButton.hidden = false;
+    }
+}
 
-playRound("rock");
-
-
+function disableChoiceButtons(){
+    choiceButtons.forEach((button) => {
+        button.disabled = true;
+    });
+}
 
 
 function resetGame() {
@@ -87,7 +107,7 @@ function resetGame() {
     restartButton.hidden = true;
 }
 
-
+restartButton.addEventListener("click", resetGame);
 /* Old codes
 // Global variables
 
