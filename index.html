@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rock Paper Scissors (Accessible Version)</title>
+    <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <main id="main">
-        <h1 class="center">Rock Paper Scissors (Accessible Version)</h1>        
+        <h1 class="center">Rock Paper Scissors</h1>        
         <p id="instructions" class="center">
-            Please choose rock, paper, or scissors to play against the computer.
+            Let's play Rock Paper Scissors! To start, please choose rock, paper, or scissors to play against the computer.
         </p>
         
         <section aria-labelledby="choise-hedding"> 
-            <h2 id="choise-hedding" class="center">
+            <h2 id="choise-hedding" class="visually-hidden">
                 Make your choice.
             </h2>
 
@@ -24,6 +24,7 @@
                 <button type="button"  data-choice="paper" class="choice" id="paper">Paper</button>
             </div>
         </section>
+<!-- 
 
         <section aria-atomic="true" aria-live="polite">
             <h2 class="center">Status</h2>
@@ -32,6 +33,8 @@
             </p>
 
         </section>
+         -->
+
 
         <section aria-labelledby="result-heading" aria-live="polite" aria-atomic="true">
             <h2 id="result-heading" class="center">Round Result</h2>

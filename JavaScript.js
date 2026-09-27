@@ -5,6 +5,7 @@ let draw = 0;
 let gameOver = false;
 const winningScore = 5;
 let result = "";
+let round = 1;
 
 // Page Elements Selectors
 const choiceButtons = document.querySelectorAll("[data-choice]");
@@ -13,14 +14,13 @@ const scoreDisplay = document.querySelector("#score")
 const humanScoreDisplay = document.querySelector("#human-score");
 const computerScoreDisplay = document.querySelector("#computer-score");
 const restartButton = document.querySelector("#restart-button")
-const actionFeedback = document.querySelector("#action-feedback");
+const resultHeading = document.querySelector("#result-heading");
 
 choiceButtons.forEach((button) => {
     button.addEventListener("click", ()=>{
         humanSelection = button.dataset.choice;
-        actionFeedback.textContent =
-        `You selected ${humanSelection}. Playing the round.`;
         playRound(humanSelection);
+        round ++;
     })
 })
 
@@ -50,7 +50,8 @@ function playRound (humanChoice) {
 
     // Compare humanChoice against computerChoice
     if (humanChoice === computerChoice) {
-     
+        // <h2 id="result-heading" class="center">Round Result</h2>
+        resultHeading.textContent = `Round ${round} Result`;
         results.textContent = `It's a tie. You both chose ${humanChoice}.`;
         
     
@@ -60,11 +61,11 @@ function playRound (humanChoice) {
         (humanChoice === "paper" && computerChoice === "rock")
     ){
         // Human wins
-        
+        resultHeading.textContent = `Round ${round} Result`;
         results.textContent = `You win this round. ${humanChoice} beats ${computerChoice}!`
         humanScore++;
     } else {
-       
+        resultHeading.textContent = `Round ${round} Result`;
         results.textContent = `You lose this round. ${computerChoice} beats ${humanChoice}.`
         computerScore++;
     }
@@ -81,16 +82,16 @@ function checkGameOver() {
         gameOver = true;
         disableChoiceButtons();
         restartButton.hidden = false;
-        actionFeedback.textContent =
-        "The game is over. Select Play again to start a new game.";
+        // actionFeedback.textContent =
+        // "The game is over. Select Play again to start a new game.";
         
     } else if (computerScore === winningScore) {
-        results.textContent = `The computer won the game ${computerScore} tp ${humanScore}.`;
+        results.textContent = `The computer won the game ${computerScore} to ${humanScore}.`;
         gameOver = true;
         disableChoiceButtons();
         restartButton.hidden = false;
-        actionFeedback.textContent =
-        "The game is over. Select Play again to start a new game.";
+        // actionFeedback.textContent =
+        // "The game is over. Select Play again to start a new game.";
     }
 }
 
@@ -105,12 +106,12 @@ function resetGame() {
     humanScore = 0;
     computerScore = 0;
     gameOver = false;
+    round = 1;
 
     updateScoreDisplay();
 
     results.textContent = "Make a choice to begin.";
-    actionFeedback.textContent =
-    "You haven't started a game. Your choice will be displayed here once you make a choice.";
+    resultHeading.textContent = `Round Result`;
 
     choiceButtons.forEach((button) => {
         button.disabled = false;
